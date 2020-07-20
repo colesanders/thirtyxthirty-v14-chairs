@@ -1,0 +1,24 @@
+<mat-card class="mat-card-light">
+    <mat-card-header>
+      <mat-card-title class="accent">
+        Chairs List
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let chair of chairs" (click)="selected.emit(chair)" style="cursor: pointer">
+          <h3 matLine> {{ chair.type | titlecase}} </h3>
+          <p matLine>
+            {{ chair.legs }} Legs
+            <span *ngIf="chair.backing">, Has Backing</span>
+            , {{ chair.seatShape | titlecase}} Seat
+          </p>
+
+          <button mat-icon-button color="warn" (click)="deleted.emit(chair); $event.stopImmediatePropagation()" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+      
+    </mat-card-content>
+</mat-card>

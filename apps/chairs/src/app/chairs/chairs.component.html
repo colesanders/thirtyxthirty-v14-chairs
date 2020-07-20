@@ -1,0 +1,11 @@
+<div class="chairs-containers">
+    <div class="chairs-list">
+        <thirty-chairs-list [chairs]="chairs$ | async" (selected)="select($event)" (deleted)="delete($event)">
+        </thirty-chairs-list>
+    </div>
+    <div [@openClose]="detailOpen ? 'open' : 'closed'" >
+        <thirty-chairs-detail [chair]="chair$ | async" (saved)="save($event)" (cancelled)="cancel()" 
+        (click)="focusDetail();$event.stopImmediatePropagation()" > 
+        </thirty-chairs-detail>
+    </div>
+</div>
